@@ -80,7 +80,7 @@ app.use(async (req, res, next) => {
     return res.send({err: 'no token'})
   }
 
-  //try {
+  try {
     const ticket = await clien2t.verifyIdToken({
       idToken: id_token,
       audience: CLIENT_ID,
@@ -88,9 +88,9 @@ app.use(async (req, res, next) => {
 
     req.local = {user: await ticket.getPayload()};
     next();
-  // } catch {
-  //   return res.send({err: 'invalid token'})
-  // }
+  } catch {
+    return res.send({err: 'invalid token'})
+  }
 });
 client.connect()
   .then(() => {
