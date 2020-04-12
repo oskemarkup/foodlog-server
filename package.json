@@ -11,8 +11,11 @@
     "test": "node test.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "ejs": "^2.5.6",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "google-auth-library": "^6.0.0",
+    "mongodb": "^3.5.5"
   },
   "devDependencies": {
     "request": "^2.81.0",
