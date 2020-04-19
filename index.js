@@ -1,4 +1,3 @@
-console.log(process.env);
 const express = require('express');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
@@ -9,9 +8,9 @@ const checkId = (req, res, next) => {
   const { id } = req.query;
 
   if (!id) {
-    return res.send({ error: 'no id' });
+    return res.send({ error: 'No Id' });
   } else if (!ObjectId.isValid(id)) {
-    return res.send({ error: 'invalid id' });
+    return res.send({ error: 'Invalid Id' });
   }
 
   next();
@@ -21,7 +20,7 @@ const routes = (app, db) => {
   app.get('/read', async (req, res) => {
     const data = await db.collection('meals').find({ author: req.local.user.sub }).toArray();
 
-    await res.send({data, user: req.local.user});
+    await res.send({ data, user: req.local.user });
   });
 
   app.post('/create', async (req, res) => {
@@ -42,7 +41,7 @@ const routes = (app, db) => {
     );
 
     if (!value) {
-      return res.status(500).send({ error: 'not found' });
+      return res.send({ error: 'Not Found' });
     }
 
     await res.send(value);
@@ -56,14 +55,14 @@ const routes = (app, db) => {
     });
 
     if (!value) {
-      return res.status(500).send({ error: 'not found' });
+      return res.send({ error: 'Not Found' });
     }
 
     await res.send(value);
   });
 };
 
-const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/nutrition';
+const url = process.env.MONGODB_URI;
 const client = new MongoClient(url, { useUnifiedTopology: true });
 const app = express();
 
@@ -77,7 +76,7 @@ app.use(async (req, res, next) => {
   const { id_token } = req.query;
 
   if (!id_token) {
-    return res.send({err: 'no token'})
+    return res.send({ error: 'No Token' })
   }
 
   try {
@@ -89,7 +88,7 @@ app.use(async (req, res, next) => {
     req.local = {user: await ticket.getPayload()};
     next();
   } catch {
-    return res.send({err: 'invalid token'})
+    return res.send({ error: 'Invalid Token' })
   }
 });
 client.connect()

@@ -1,14 +1,13 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
+  "name": "foodlog-server",
+  "version": "1.0.0",
+  "description": "Backend for FoodLog",
   "engines": {
     "node": "12.x"
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
+    "start": "heroku local -e .env.local"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -20,10 +19,6 @@
   "devDependencies": {
     "request": "^2.81.0",
     "tape": "^4.7.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
   },
   "keywords": [
     "node",
