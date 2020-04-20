@@ -25,7 +25,7 @@
             <td><%=(new Date(row.date)).toString()%></td>
             <td><%=row.user.email%></td>
             <td><%=row.type%></td>
-            <td><code><%=JSON.stringify(row.payload, null, 2)%></code></td>
+            <td><pre><%=JSON.stringify(row.payload, null, 2)%></pre></td>
         </tr>
         <%}%>
     </table>
