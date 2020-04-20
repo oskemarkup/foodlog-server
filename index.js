@@ -4,7 +4,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 const express = require('express');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
-const router = require('./routes');
+const router = require('./meals/routes');
 
 const app = express();
 const client = new MongoClient(MONGODB_URI, { useUnifiedTopology: true });
