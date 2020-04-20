@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "heroku local -e .env.local"
+    "start": "heroku local -e local.env"
   },
   "dependencies": {
     "cors": "^2.8.5",
